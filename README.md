@@ -1,4 +1,3 @@
-last-month-fm
-=============
+# Last Month FM
 
 An overview of your monthly Last.fm activity

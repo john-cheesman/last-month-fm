@@ -1,0 +1,22 @@
+{
+  "name": "last-month-fm",
+  "version": "0.0.0",
+  "description": "An overview of your monthly Last.fm activity",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/john-cheesman/last-month-fm.git"
+  },
+  "keywords": [
+    "last.fm"
+  ],
+  "author": "John Cheesman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/john-cheesman/last-month-fm/issues"
+  },
+  "homepage": "https://github.com/john-cheesman/last-month-fm"
+}

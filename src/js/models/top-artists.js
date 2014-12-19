@@ -1,15 +1,23 @@
-var Backbone = require('backbone');
-var $        = require('jquery');
-var config   = require('../config');
-Backbone.$   = $;
+var Backbone, $, config;
 
-module.exports = Backbone.Model.extend({
-    user: 'blues_driven',
+$              = require('jquery');
+Backbone       = require('backbone');
+Backbone.$     = $;
+Backbone.Epoxy = require('backbone.epoxy');
+config         = require('../config');
+
+module.exports = Backbone.Epoxy.Model.extend({
+    defaults: {
+        username: '',
+        fetch: function() {
+            return this.fetch();
+        }
+    },
     urlRoot: 'http://ws.audioscrobbler.com/2.0/?',
     url: function() {
         return this.urlRoot +
             'method=user.gettopartists&user=' +
-            this.user +
+            this.defaults.username +
             '&limit=200' +
             '&period=1month' +
             '&api_key=' +

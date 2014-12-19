@@ -1,11 +1,15 @@
-var config     = require('./config');
-var TopArtists = require('./models/top-artists');
+var config, TopArtists, AppView;
+
+config     = require('./config');
+TopArtists = require('./models/top-artists');
+AppView    = require('./views/app-view');
 
 module.exports = {
     init: function() {
         var topArtists = new TopArtists();
-
-        topArtists.fetch();
+        var appView    = new AppView({
+            model: topArtists
+        });
 
         console.log(topArtists, config);
     }

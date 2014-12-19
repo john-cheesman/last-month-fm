@@ -8,14 +8,14 @@
     </head>
 
     <body>
-        <main class="content">
+        <main class="content js-app">
             <section class="user-search">
                 <p>Enter your Last.fm username:</p>
 
-                <form class="user-search-form">
-                    <input type="text" />
-                    <button class="user-search-button">Go</button>
-                </form>
+                <input type="text" data-bind="value:username,events:['keyup']"/>
+                <button class="js-user-search-button">Search</button>
+
+                <p>Hello <span data-bind="text:username"></span>!</p>
             </section>
 
             <section class="summary">

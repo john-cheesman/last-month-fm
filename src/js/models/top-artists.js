@@ -20,9 +20,21 @@ module.exports = Backbone.Epoxy.Model.extend({
         monthlyArtists: function() {
             var artists;
 
-            artists = this.get('topartists');
+            artists = this.get('topartists').artist;
 
-            return artists.artist.length;
+            return artists.length;
+        },
+        monthlyTracks: function() {
+            var artists, tracks, i;
+
+            artists = this.get('topartists').artist;
+            tracks  = 0;
+
+            for (i=0; i<artists.length; i++) {
+                tracks += parseInt(artists[i].playcount);
+            }
+
+            return tracks;
         }
     },
     urlRoot: 'http://ws.audioscrobbler.com/2.0/?',
@@ -30,7 +42,7 @@ module.exports = Backbone.Epoxy.Model.extend({
         return this.urlRoot +
             'method=user.gettopartists&user=' +
             this.get('username') +
-            '&limit=200' +
+            '&limit=1000' +
             '&period=1month' +
             '&api_key=' +
             config.apiKey +

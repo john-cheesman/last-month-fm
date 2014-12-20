@@ -12,14 +12,11 @@
             <section class="user-search">
                 <p>Enter your Last.fm username:</p>
 
-                <input type="text" data-bind="value:username,events:['keyup']"/>
-                <button class="js-user-search-button">Search</button>
-
-                <p>Hello <span data-bind="text:username"></span>!</p>
+                <input class="js-user-search-input" type="text" />
             </section>
 
-            <section class="summary">
-                <p>John, in the last month you listened to <span data-bind="text:monthlyTracks"></span> tracks by <span data-bind="text:monthlyArtists"></span> artists.</p>
+            <section class="summary js-summary js-top-artists">
+                <p><span class="js-user-first-name"></span>, in the last month you listened to <span class="js-monthly-tracks"></span> tracks by <span class="js-monthly-artists"></span> artists.</p>
             </section>
         </main>
 

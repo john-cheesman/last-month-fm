@@ -3,41 +3,35 @@ var Backbone, $, config;
 $              = require('jquery');
 Backbone       = require('backbone');
 Backbone.$     = $;
-Backbone.Epoxy = require('backbone.epoxy');
 config         = require('../config');
 
-module.exports = Backbone.Epoxy.Model.extend({
+module.exports = Backbone.Model.extend({
     defaults: {
         username: '',
         topartists: {
             artist: []
-        },
-        fetch: function() {
-            return this.fetch();
         }
     },
-    computeds: {
-        monthlyArtists: function() {
-            var artists;
+    monthlyArtists: function() {
+        var artists;
 
-            artists = this.get('topartists').artist;
+        artists = this.get('topartists').artist;
 
-            return artists.length;
-        },
-        monthlyTracks: function() {
-            var artists, tracks, i;
-
-            artists = this.get('topartists').artist;
-            tracks  = 0;
-
-            for (i=0; i<artists.length; i++) {
-                tracks += parseInt(artists[i].playcount);
-            }
-
-            return tracks;
-        }
+        return artists.length;
     },
-    urlRoot: 'http://ws.audioscrobbler.com/2.0/?',
+    monthlyTracks: function() {
+        var artists, tracks, i;
+
+        artists = this.get('topartists').artist;
+        tracks  = 0;
+
+        for (i=0; i<artists.length; i++) {
+            tracks += parseInt(artists[i].playcount);
+        }
+
+        return tracks;
+    },
+    urlRoot: config.urlRoot,
     url: function() {
         return this.urlRoot +
             'method=user.gettopartists&user=' +

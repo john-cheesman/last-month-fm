@@ -26,7 +26,7 @@ module.exports = {
         // A separate bundle will be generated for each
         // bundle config in the list below
         bundleConfigs: [{
-            entries: src + '/js/app.js',
+            entries: src + '/js/views/app-view.js',
             dest: dest + '/js',
             outputName: 'scripts.js'
         }]

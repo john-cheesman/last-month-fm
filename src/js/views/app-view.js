@@ -36,14 +36,17 @@ module.exports = Backbone.View.extend({
     },
 
     searchOnEnter: function(e) {
-        if (e.keyCode != 13) return;
-        if (!this.input.val()) return;
+        if (this.input.val() && e.keyCode === 13) {
 
-        this.user.set('username', this.input.val());
-        this.topArtists.set('username', this.input.val());
+            this.user.set('username', this.input.val());
+            this.topArtists.set('username', this.input.val());
 
-        this.user.fetch();
-        this.topArtists.fetch();
+            this.user.fetch();
+            this.topArtists.fetch();
+        }
+        else {
+            return;
+        }
     }
 });
 

@@ -1,2 +1,9 @@
-<img src="{{ image.[3].[#text] }}" alt="{{ realname }}" />
-<p>Hello {{ realname }}</p>
+{{#if image.[3].[#text].length}}
+    <img src="{{image.[3].[#text]}}" alt="{{realname}}" />
+{{/if}}
+
+{{#if realname.length}}
+    <p>Hi {{realname}}</p>
+{{else}}
+    <p>Hi {{name}}</p>
+{{/if}}

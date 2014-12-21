@@ -25,7 +25,8 @@ module.exports = Backbone.View.extend({
         });
 
         this.topArtistsView = new TopArtistsView({
-            model: this.topArtists
+            model: this.topArtists,
+            el: '.js-top-artists'
         });
 
         this.input = this.$('.js-user-search-input');

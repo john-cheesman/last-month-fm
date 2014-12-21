@@ -1,0 +1,9 @@
+{{#if artist.length}}
+    <ul>
+        {{#each artist}}
+            <li>{{name}}: {{playcount}} plays</li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>You have no activity for the last month.</p>
+{{/if}}

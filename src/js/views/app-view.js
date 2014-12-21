@@ -20,7 +20,8 @@ module.exports = Backbone.View.extend({
         this.topArtists = new TopArtists();
 
         this.userView = new UserView({
-            model: this.user
+            model: this.user,
+            el: '.js-user'
         });
 
         this.topArtistsView = new TopArtistsView({

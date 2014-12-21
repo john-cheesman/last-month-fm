@@ -1,16 +1,18 @@
-var Backbone, $;
+var Backbone, $, template;
 
 $              = require('jquery');
 Backbone       = require('backbone');
 Backbone.$     = $;
+template       = require('../templates/user');
 
 module.exports = Backbone.View.extend({
-    inintialize: function() {
-        this.on('user-search', this.update(event, data));
+    template: template,
+
+    initialize: function() {
+        this.listenTo(this.model, 'change', this.render);
     },
-    update: function(event, data) {
-        this.model.set('username', data.username);
-        this.model.fetch();
-    },
-    el: '.js-user'
+
+    render: function() {
+        this.$el.html(this.template(this.model.get('user')))
+    }
 });

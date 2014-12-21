@@ -7,9 +7,12 @@ config         = require('../config');
 
 module.exports = Backbone.Model.extend({
     defaults: {
-        username: ''
+        username: '',
+        user: {}
     },
+
     urlRoot: config.urlRoot,
+
     url: function() {
         return this.urlRoot +
         'method=user.getinfo&user=' +

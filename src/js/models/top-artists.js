@@ -10,6 +10,10 @@ module.exports = Backbone.Model.extend({
         username: '',
         topartists: {
             artist: []
+        },
+        monthlyStats: {
+            monthlyArtists: '',
+            monthlyTracks: ''
         }
     },
     monthlyArtists: function() {

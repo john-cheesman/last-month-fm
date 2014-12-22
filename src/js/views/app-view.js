@@ -12,7 +12,8 @@ module.exports = Backbone.View.extend({
     el: '.js-app',
 
     events: {
-        'keyup .js-user-search-input': 'searchOnEnter'
+        'keyup .js-user-search-input': 'searchOnEnter',
+        'click .js-user-search-button': 'search'
     },
 
     initialize: function() {
@@ -37,14 +38,17 @@ module.exports = Backbone.View.extend({
 
     },
 
+    search: function() {
+        this.user.set('username', this.input.val());
+        this.topArtists.set('username', this.input.val());
+
+        this.user.fetch();
+        this.topArtists.fetch();
+    },
+
     searchOnEnter: function(e) {
         if (this.input.val() && e.keyCode === 13) {
-
-            this.user.set('username', this.input.val());
-            this.topArtists.set('username', this.input.val());
-
-            this.user.fetch();
-            this.topArtists.fetch();
+            this.search();
         }
         else {
             return;

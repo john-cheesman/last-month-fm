@@ -23,7 +23,7 @@ module.exports = {
     browserify: {
         // Enable source maps
         debug: true,
-        // Additional file extentions to make optional
+        // Additional file extensions to make optional
         extensions: ['.hbs'],
         // A separate bundle will be generated for each
         // bundle config in the list below

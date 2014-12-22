@@ -1,0 +1,11 @@
+<h1>Top Tracks</h1>
+
+{{#if track.length}}
+    <ul>
+        {{#each track}}
+            <li>{{name}} by <a href="{{artist.url}}">{{artist.name}}</a>: {{playcount}} plays</li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>You have no activity for the last month.</p>
+{{/if}}

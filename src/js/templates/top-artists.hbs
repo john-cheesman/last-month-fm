@@ -3,7 +3,7 @@
 {{#if artist.length}}
     <ul>
         {{#each artist}}
-            <li>{{name}}: {{playcount}} plays</li>
+            <li><a href="{{url}}">{{name}}</a>: {{playcount}} plays</li>
         {{/each}}
     </ul>
 {{else}}

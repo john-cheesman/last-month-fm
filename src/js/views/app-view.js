@@ -1,14 +1,17 @@
 var Backbone, $, app, User, TopArtists,
-    UserView, TopArtistsView, SummaryView;
+    TopTracks, UserView, TopArtistsView,
+    SummaryView, TopTracksView;
 
 $              = require('jquery');
 Backbone       = require('backbone');
 Backbone.$     = $;
 User           = require('../models/user');
 TopArtists     = require('../models/top-artists');
+TopTracks      = require('../models/top-tracks');
 UserView       = require('../views/user-view');
 TopArtistsView = require('../views/top-artists-view');
 SummaryView    = require('../views/summary-view');
+TopTracksView  = require('../views/top-tracks-view')
 
 module.exports = Backbone.View.extend({
     el: '.js-app',
@@ -21,6 +24,7 @@ module.exports = Backbone.View.extend({
     initialize: function() {
         this.user = new User();
         this.topArtists = new TopArtists();
+        this.topTracks = new TopTracks();
 
         this.userView = new UserView({
             model: this.user,
@@ -35,10 +39,22 @@ module.exports = Backbone.View.extend({
         this.summaryView = new SummaryView({
             model: this.topArtists,
             el: '.js-summary'
-        })
+        });
+
+        this.topTracksView = new TopTracksView({
+            model: this.topTracks,
+            el: '.js-top-tracks'
+        });
 
         this.input = this.$('.js-user-search-input');
-        console.log(this.user, this.topArtists, this.userView, this.topArtistsView, this.summaryView);
+        console.log(
+            this.user,
+            this.topArtists,
+            this.userView,
+            this.topArtistsView,
+            this.summaryView,
+            this.topTracksView
+        );
     },
 
     render: function() {
@@ -48,9 +64,11 @@ module.exports = Backbone.View.extend({
     search: function() {
         this.user.set('username', this.input.val());
         this.topArtists.set('username', this.input.val());
+        this.topTracks.set('username', this.input.val());
 
         this.user.fetch();
         this.topArtists.fetch();
+        this.topTracks.fetch();
     },
 
     searchOnEnter: function(e) {

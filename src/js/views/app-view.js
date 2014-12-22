@@ -1,4 +1,5 @@
-var Backbone, $, app, User, TopArtists, UserView, TopArtistsView;
+var Backbone, $, app, User, TopArtists,
+    UserView, TopArtistsView, SummaryView;
 
 $              = require('jquery');
 Backbone       = require('backbone');
@@ -7,6 +8,7 @@ User           = require('../models/user');
 TopArtists     = require('../models/top-artists');
 UserView       = require('../views/user-view');
 TopArtistsView = require('../views/top-artists-view');
+SummaryView    = require('../views/summary-view');
 
 module.exports = Backbone.View.extend({
     el: '.js-app',
@@ -30,8 +32,13 @@ module.exports = Backbone.View.extend({
             el: '.js-top-artists'
         });
 
+        this.summaryView = new SummaryView({
+            model: this.topArtists,
+            el: '.js-summary'
+        })
+
         this.input = this.$('.js-user-search-input');
-        console.log(this.user, this.topArtists, this.userView, this.topArtistsView);
+        console.log(this.user, this.topArtists, this.userView, this.topArtistsView, this.summaryView);
     },
 
     render: function() {

@@ -11,11 +11,9 @@ module.exports = Backbone.Model.extend({
         topartists: {
             artist: []
         },
-        monthlyStats: {
-            monthlyArtists: '',
-            monthlyTracks: ''
-        }
+        monthlyStats: {}
     },
+
     monthlyArtists: function() {
         var artists;
 
@@ -23,6 +21,7 @@ module.exports = Backbone.Model.extend({
 
         return artists.length;
     },
+
     monthlyTracks: function() {
         var artists, tracks, i;
 
@@ -35,7 +34,9 @@ module.exports = Backbone.Model.extend({
 
         return tracks;
     },
+
     urlRoot: config.urlRoot,
+
     url: function() {
         return this.urlRoot +
             'method=user.gettopartists&user=' +
